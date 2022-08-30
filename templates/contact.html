@@ -1,0 +1,56 @@
+{% include "header.html" %}
+
+     <!-- CONTACT -->
+     <section class="contact section-padding">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-6 mx-auto col-md-7 col-12 py-5 mt-5 text-center" data-aos="fade-up">
+                        {% if msg_sent: %}
+                        <h1>您的訊息已送出，感謝您的來訊</h1>
+                        {% else: %}
+                        <h1>填寫名字、Email還有想說的訊息，我就會收到您的來訊~</h1>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-lg-8 mx-auto col-md-10 col-12">
+                    
+                    <!-- Follow https://templatemo.com/contact page to setup your own contact form -->
+                    
+                      <form action="{{url_for('contact') }}" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+                        <div class="row">
+                          <div class="col-lg-6 col-12">
+                            <input type="text" class="form-control" name="name" placeholder="Name">
+                          </div>
+
+                          <div class="col-lg-6 col-12">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                          </div>
+
+                          <div class="col-lg-12 col-12">
+                            <textarea class="form-control" rows="6" name="message" placeholder="Message"></textarea>
+                          </div>
+
+                          <div class="col-lg-5 mx-auto col-7">
+                            <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+                          </div>
+                        </div>
+
+                      </form>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+<!-- How to change your own map point
+	1. Go to Google Maps
+	2. Click on your location point
+	3. Click "Share" and choose "Embed map" tab
+	4. Copy only URL and paste it within the src="" field below
+-->
+     <div class="google-map" data-aos="zoom-in">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14733.140089606637!2d120.30214987041019!3d22.60582933093136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x62d29ce2a4f9e568!2z6auY6ZuE5biC56uL5ZyW5pu46aSo57i96aSo!5e0!3m2!1szh-TW!2stw!4v1659686122210!5m2!1szh-TW!2stw" width="1920" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+     </div>
+
+{% include "footer.html" %}

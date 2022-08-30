@@ -1,0 +1,3 @@
+本模板主要的css是「templatemo-digital-trend.css」此檔案
+另外在網頁上面所看到的相關小圖示，則來自於font-awesome.min.css的東西
+對照表可以參考https://www.wfublog.com/2016/01/font-awesome-cheat-sheet.html
