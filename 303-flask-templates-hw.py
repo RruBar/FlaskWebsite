@@ -32,33 +32,27 @@ def get_weather(url:str):
     return cols,results
 
 @app.route("/")
-def fun1():
+def home():
     cols,results=get_weather(weather_url)
 
     index_dict={
-        "首頁開頭":"現在都用冨樫老師的推特<br>來當作持續學習的勉勵",
+        "首頁開頭":"Hi，我叫何柏融，歡迎來到我的個人網站逛逛<br>既然都來了不訪再多看看我的作品😀",
         "聯繫信箱":" hbr199320xy@gmail.com",
         "自我介紹開頭":"關於<strong>我</strong>的事情<br>你/妳可以先知道的是",
-        "自我介紹內文":"三十而立的話，那我應該還在學爬?<br>目前正值字面意思上的二八年華，會的東西大概如下<br>"
-                 "Python還在慢慢學；Html/Css程度可讓我套這模板<br>SQL、NoSQL都還要再多學學；雖有去leetcode寫題目，但多還是被洗臉QQ",
-        "底部標題":"很高興妳/你能來造訪我的網站!<br>再次<strong>感謝</strong>您"
+        "自我介紹內文":"<h3>目前技能大致大概如下<h3><br>"
+                 "<h3><strong style='color:black'>Python:</strong></h3>"
+                 "<ul>"
+                 "<li>Flask及相關工具(SQLAlchemy 、WTForm)</li>"
+                 "<li>爬蟲相關套件(bs4、selenium)</li>"
+                 "<li>API串接(如Line Bot)</li>"
+                 "<li>GUI相關工具(Tkinter)</li>"
+                 "</ul>"
+                 "<h3><strong style='color:black'>Html/Css:</strong></h3>基礎架構調整以及Bootstrap模板套用<br>"
+                 "<h3><strong style='color:black'>MySQL:</strong></h3>基礎CRUD(可參考作品影片)",
     }
     html_root=flask.render_template("index.html",index=index_dict,cols=cols,results=results,locate_index=True)
     return html_root
 
-@app.route("/index.html")
-def index():
-    cols,results=get_weather(weather_url)
-
-    index_dict={
-        "首頁開頭":"現在都用冨樫老師的推特<br>來當作持續學習的勉勵",
-        "聯繫信箱":" hbr199320xy@gmail.com",
-        "自我介紹開頭":"關於<strong>我</strong>的事情<br>你/妳可以先知道的是",
-        "自我介紹內文":"三十而立的話，那我應該還在學爬?<br>目前正值字面意思上的二八年華，會的東西大概如下<br>"
-                 "Python還在慢慢學；Html/Css程度可讓我套這模板<br>SQL、NoSQL都還要再多學學；雖有去leetcode寫題目，但多還是被洗臉QQ",
-    }
-    html_index=flask.render_template("index.html",index=index_dict,cols=cols,results=results,locate_index=True)
-    return html_index
 @app.route("/contact.html",methods=["GET","POST"])
 def contact():
     if flask.request.method == "POST":
@@ -95,4 +89,4 @@ def project_detail():
 
 
 if __name__ == '__main__':
-   app.run(port=80,debug=True,host='0.0.0.0')
+   app.run(port=8080,debug=True,host='0.0.0.0')
