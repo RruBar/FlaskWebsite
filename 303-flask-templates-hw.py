@@ -1,10 +1,8 @@
-# 測試 請透過
-# http://127.0.0.1:5000/
-# http://127.0.0.1:5000/html
-# 在 python 執行檔的目錄下，創建 templates/ 資料夾
-# 本程式.py
-# templates/data1.html
-# templates/data2.html
+"""
+可透過pip install pipreqs
+# 在當前目錄生成req文件
+pipreqs. - -encoding = utf8 - -force
+"""
 import datetime
 import smtplib
 import requests
