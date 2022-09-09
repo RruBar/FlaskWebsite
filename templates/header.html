@@ -34,7 +34,11 @@ https://templatemo.com/tm-538-digital-trend
         <div class="container">
             <a class="navbar-brand" href="{{url_for('home')}}">
               <i class="fa fa-send"></i>
-              Hi,I'm Po-Jung
+           {% if not current_user.is_authenticated : %}
+              歡迎來到我的個人網站
+            {% else %}
+                哈囉{{current_user.name}}!歡迎登入😁
+            {% endif %}
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -48,21 +52,33 @@ https://templatemo.com/tm-538-digital-trend
                         {% if locate_index: %}
                         <a href="#about" class="nav-link smoothScroll">Initiation</a>
                         {% else: %}
-                        <a href="./index.html#about" class="nav-link smoothScroll">Initiation</a>
+                        <a href="./#about" class="nav-link smoothScroll">Initiation</a>
                         {% endif %}
                     </li>
                     <li class="nav-item">
                         {% if locate_index: %}
                         <a href="#project" class="nav-link smoothScroll">My Works</a>
                         {% else: %}
-                        <a href="./index.html#project" class="nav-link smoothScroll">My Works</a>
+                        <a href="./#project" class="nav-link smoothScroll">My Works</a>
                         {% endif %}
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a href="./blog.html" class="nav-link">Blog</a>-->
-<!--                    </li>-->
+                    </li>
                     <li class="nav-item">
-                        <a href="contact.html" class="nav-link contact">Contact</a>
+                        <a href="./blog.html" class="nav-link">Blog</a>
+                    </li>
+                    {% if not current_user.is_authenticated : %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a href="./contact" class="nav-link contact">Contact</a>
                     </li>
                 </ul>
             </div>

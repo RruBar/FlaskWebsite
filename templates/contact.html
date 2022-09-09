@@ -9,7 +9,11 @@
                         {% if msg_sent: %}
                         <h1>您的訊息已送出，感謝您的來訊</h1>
                         {% else: %}
-                        <h1>填寫名字、Email還有想說的訊息，我就會收到您的來訊~</h1>
+                            {% if not current_user.is_authenticated : %}
+                            <h1>填寫名字、Email還有想說的訊息，我就會收到您的來訊~</h1>
+                            {% else: %}
+                            <h1>{{current_user.name}}您好~<br>有什麼想跟我說的嗎?😊</h1>
+                            {% endif %}
                         {% endif %}
                     </div>
 
@@ -19,16 +23,16 @@
                     
                       <form action="{{url_for('contact') }}" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
                         <div class="row">
+                        {% if not current_user.is_authenticated : %}
                           <div class="col-lg-6 col-12">
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                            <input type="text" class="form-control" name="name" placeholder="Name" required>
                           </div>
-
                           <div class="col-lg-6 col-12">
-                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
                           </div>
-
+                        {% endif %}
                           <div class="col-lg-12 col-12">
-                            <textarea class="form-control" rows="6" name="message" placeholder="Message"></textarea>
+                            <textarea class="form-control" rows="6" name="message" placeholder="Message" required></textarea>
                           </div>
 
                           <div class="col-lg-5 mx-auto col-7">
