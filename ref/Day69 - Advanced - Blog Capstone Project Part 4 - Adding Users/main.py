@@ -79,7 +79,14 @@ def admin_only(fun):
 
 @app.route('/')
 def get_all_posts():
+    # 關於從db調出來的物件所組成的list，在jinja不熟的情況下，還是回歸用python處理
     posts = BlogPost.query.all()
+    posts.reverse()
+    print(posts)
+    the_last_post=posts[0]
+    print(the_last_post)
+    posts=posts[1:]
+    print(posts)
     return render_template("index.html", all_posts=posts,current_user=current_user)
 
 
@@ -214,4 +221,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000,debug=True)
