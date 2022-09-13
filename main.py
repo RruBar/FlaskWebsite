@@ -18,8 +18,8 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from flask_gravatar import Gravatar #　Gravatar功能用來提供comment時的頭像用
 
-import ssl #  SSL  處理，  https    SSSSSS 就需要加上以下2行
-ssl._create_default_https_context = ssl._create_unverified_context    # 因.urlopen發生問題，將ssl憑證排除
+# import ssl #  SSL  處理，  https    SSSSSS 就需要加上以下2行
+# ssl._create_default_https_context = ssl._create_unverified_context    # 因.urlopen發生問題，將ssl憑證排除
 
 
 app = Flask(__name__,static_url_path='/static')
