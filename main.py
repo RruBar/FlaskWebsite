@@ -106,11 +106,10 @@ def get_weather(url:str):
 
 @app.route("/")
 def home():
-    #TODO 首頁的天氣API資料抓取待修條件
     try:
         cols,results=get_weather(weather_url)
     except:
-        cols,results=None,None
+        cols,results=["目前","資料抓取","出現","異常狀況"],None
     index_dict={
         "首頁開頭":"Hi，我叫何柏融，歡迎來到我的個人網站逛逛<br>既然都來了不訪再多看看我的作品😀",
         "聯繫信箱":" hbr199320xy@gmail.com",
@@ -124,7 +123,7 @@ def home():
                  "<li>GUI相關工具(Tkinter)</li>"
                  "</ul>"
                  "<h3><strong style='color:black'>Html/Css:</strong></h3>基礎架構調整以及Bootstrap模板套用<br>"
-                 "<h3><strong style='color:black'>MySQL:</strong></h3>基礎CRUD(可參考作品影片)",
+                 "<h3><strong style='color:black'>MySQL:</strong></h3>基礎資料庫操作",
     }
     return render_template("index.html",index=index_dict,cols=cols,results=results,locate_index=True,current_user=current_user)
 
